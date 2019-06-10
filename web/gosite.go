@@ -62,7 +62,7 @@ func main() {
   })
 
   http.HandleFunc("/postregister",func (w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w,r.FormValue("email_address"));
+    fmt.Fprintf(w,r.FormValue("email"));
   })
   
   http.ListenAndServe(":8080", nil)
