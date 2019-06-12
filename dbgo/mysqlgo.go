@@ -16,7 +16,7 @@ type Employee struct{
 func dbConn()(db *sql.DB){
   dbDriver := "mysql"
   dbUser   := "root"
-  dbPass   := "root"
+  dbPass   := ""
   dbName   := "schooling_go"
   db, err  := sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
   if(err != nil){
@@ -46,9 +46,9 @@ func Index(w http.ResponseWriter, r *http.Request){
     emp.Name = name
     emp.City = city
     res = append(res,emp)
-    tmpl.ExecuteTemplate(w,"Index",res)
-    defer db.Close()
   }
+  tmpl.ExecuteTemplate(w,"Index",res)
+  defer db.Close()
 }
 
 func main(){
